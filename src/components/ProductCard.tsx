@@ -31,7 +31,7 @@ export const ProductCard: React.FC<Props> = ({ product, onPress }) => {
   return (
     <TouchableOpacity style={styles.card} onPress={onPress} activeOpacity={0.8}>
       <View style={styles.imageWrapper}>
-        <Image source={{ uri: product.image }} style={styles.image} resizeMode="contain" />
+        <Image source={{ uri: product.image }} style={styles.image} resizeMode="cover" />
       </View>
       <Text style={styles.title} numberOfLines={1}>
         {product.title}
@@ -62,16 +62,17 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
   },
   imageWrapper: {
-    height: 100,
+    height: 110,
     backgroundColor: '#EFF6FF',
     borderRadius: 8,
+    overflow: 'hidden',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 8,
   },
   image: {
-    width: '80%',
-    height: '80%',
+    width: '100%',
+    height: '100%',
   },
   title: {
     fontSize: 13,

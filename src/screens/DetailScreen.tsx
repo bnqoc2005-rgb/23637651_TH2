@@ -55,7 +55,7 @@ export const DetailScreen: React.FC = () => {
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.imageCard}>
           {product?.image && (
-            <Image source={{ uri: product.image }} style={styles.image} resizeMode="contain" />
+            <Image source={{ uri: product.image }} style={styles.image} resizeMode="cover" />
           )}
         </View>
 
@@ -96,11 +96,12 @@ const styles = StyleSheet.create({
     height: 220,
     backgroundColor: '#FEF3C7',
     borderRadius: 16,
+    overflow: 'hidden',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
   },
-  image: { width: '70%', height: '70%' },
+  image: { width: '100%', height: '100%' },
   title: { fontSize: 20, fontWeight: 'bold', color: THEME.text, textAlign: 'center' },
   price: { fontSize: 22, fontWeight: '800', color: THEME.primary, marginVertical: 8 },
   deliveryNote: { fontSize: 13, color: THEME.textLight, marginBottom: 14 },
