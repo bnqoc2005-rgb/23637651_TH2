@@ -13,6 +13,8 @@ module.exports = {
           '@stores': './src/stores',
           '@hooks': './src/hooks',
           '@navigation': './src/navigation',
+          'expo-haptics': './src/compat/expo-haptics',
+          'expo-location': './src/compat/expo-location',
         },
       },
     ],
