@@ -27,10 +27,14 @@ export const DetailScreen: React.FC = () => {
 
   const handleAdd = () => {
     if (!product) return;
-    if (VARIANT.hapticOnAdd === 'impact') {
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    } else {
-      Haptics.selectionAsync();
+    try {
+      if (VARIANT.hapticOnAdd === 'impact') {
+        Haptics?.impactAsync?.(Haptics.ImpactFeedbackStyle.Medium);
+      } else {
+        Haptics?.selectionAsync?.();
+      }
+    } catch (e) {
+      // Ignored if native haptics is not available
     }
     addItem(product);
     Alert.alert('Thành công', `Đã thêm món vào giỏ! [${STUDENT.mssv}]`);

@@ -16,10 +16,14 @@ export const ProductCard: React.FC<Props> = ({ product, onPress }) => {
   const priceVND = Math.round(product.price * PRICE_MULTIPLIER);
 
   const handleAdd = () => {
-    if (VARIANT.hapticOnAdd === 'impact') {
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    } else {
-      Haptics.selectionAsync();
+    try {
+      if (VARIANT.hapticOnAdd === 'impact') {
+        Haptics?.impactAsync?.(Haptics.ImpactFeedbackStyle.Medium);
+      } else {
+        Haptics?.selectionAsync?.();
+      }
+    } catch (e) {
+      // Ignored if native haptics is not available
     }
     addItem(product);
   };
